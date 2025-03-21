@@ -3,11 +3,13 @@
 :root {
     --primary-color: #e6b800;
     --secondary-color: #d9a400;
-    --bg-color: #121212;
-    --card-bg: #1c1c1c;
-    --text-color: #e0e0e0;
-    --muted-text: #b0b0b0;
-    --shadow: rgba(0, 0, 0, 0.5);
+    --bg-color-light: #ffffff;
+    --bg-color-dark: #121212;
+    --text-color-light: #333333;
+    --text-color-dark: #e0e0e0;
+    --muted-text: #777777;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --glass-blur: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -18,19 +20,25 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
     padding: 0 1rem;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Centered header */
+body.dark-mode {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
 header {
-    background: var(--card-bg);
+    background: var(--glass-blur);
+    backdrop-filter: blur(10px);
     padding: 20px;
     box-shadow: 0 4px 8px var(--shadow);
     position: sticky;
@@ -38,7 +46,7 @@ header {
     width: 100%;
     z-index: 1000;
     text-align: center;
-    border-radius: 10px; /* Rounded header */
+    border-radius: 10px;
 }
 
 nav ul {
@@ -50,11 +58,10 @@ nav ul {
 }
 
 nav ul li a {
-    color: var(--text-color);
+    color: inherit;
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s, transform 0.3s;
-    border-radius: 8px; /* Rounded links */
 }
 
 nav ul li a:hover {
@@ -62,42 +69,75 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Hero section */
+#dark-mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#dark-mode-toggle img {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.3s;
+}
+
+#dark-mode-toggle img:hover {
+    filter: brightness(0.8);
+}
+
 .hero {
-    padding: 60px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #e6b800, #d9a400);
+    color: var(--bg-color-light);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    z-index: 1;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    color: var(--primary-color);
-    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
     animation: fadeIn 1.5s ease-in-out;
-    border-radius: 10px; /* Rounded h1 */
 }
 
 .hero p {
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-    color: var(--muted-text);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
     max-width: 600px;
-    border-radius: 8px; /* Rounded paragraph */
 }
 
-/* CTA button */
+.hero-mockup img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow);
+    transition: transform 0.3s;
+}
+
+.hero-mockup img:hover {
+    transform: scale(1.05);
+}
+
 .cta-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--bg-color);
+    background: var(--glass-blur);
+    backdrop-filter: blur(10px);
+    color: var(--text-color-light);
     padding: 15px 30px;
-    border-radius: 12px; /* Rounded button */
+    border-radius: 12px;
     text-decoration: none;
     font-weight: 500;
     display: inline-block;
     transition: transform 0.3s, box-shadow 0.3s;
-    margin-top: 20px;
+    border: 1px solid var(--glass-blur);
 }
 
 .cta-btn:hover {
@@ -105,139 +145,78 @@ nav ul li a:hover {
     box-shadow: 0 5px 15px var(--shadow);
 }
 
-.cta-btn-herbarium {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--bg-color);
-    padding: 15px 30px;
-    border-radius: 12px; /* Rounded button */
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-block;
-    transition: transform 0.3s, box-shadow 0.3s;
-    margin-top: 20px;
+body.dark-mode .cta-btn {
+    color: var(--text-color-dark);
 }
 
-.cta-btn-herbarium:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--shadow);
-}
-
-/* Collection section */
-.collection {
+.features {
     padding: 60px 20px;
     text-align: center;
 }
 
-.collection h2, .collection h3 {
+.features h2 {
     font-size: 2.5rem;
     color: var(--primary-color);
+    margin-bottom: 40px;
     animation: fadeIn 1.5s ease-in-out;
-    margin-bottom: 20px;
-    border-radius: 8px; /* Rounded header */
 }
 
-.collection p {
-    font-size: 1.125rem;
-    color: var(--muted-text);
-    max-width: 600px;
-    margin: 0 auto 20px;
-}
-
-/* Centered Gallery */
-.gallery {
+.feature-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px;
-    justify-content: center;
-    border-radius: 12px; /* Rounded gallery */
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
-/* Wallpaper cards */
-.wallpaper-card {
-    background: #222;
-    border-radius: 15px; /* Rounded cards */
-    padding: 20px;
-    box-shadow: 0 8px 20px var(--shadow);
+.feature-card {
+    background: var(--glass-blur);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px var(--shadow);
     transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
+    border: 1px solid var(--glass-blur);
 }
 
-.wallpaper-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-.wallpaper-card img {
-    width: 100%;
-    border-radius: 12px; /* Rounded images */
-    object-fit: cover;
-    transition: transform 0.3s;
+.feature-card h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
 
-.wallpaper-card:hover img {
-    transform: scale(1.05);
+.feature-card p {
+    font-size: 1.1rem;
+    color: var(--muted-text);
+    margin-bottom: 20px;
 }
 
-.overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    transition: opacity 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px; /* Rounded overlay */
-}
-
-.wallpaper-card:hover .overlay {
-    opacity: 1;
-}
-
-.overlay .download-btn {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--bg-color);
-    font-size: 18px;
-    padding: 15px 25px;
-    border-radius: 12px; /* Rounded button */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s;
-    text-align: center;
-    text-decoration: none;
-}
-
-.overlay .download-btn:hover {
-    transform: scale(1.05);
-}
-
-/* Centered Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: var(--card-bg);
+    background: var(--glass-blur);
+    backdrop-filter: blur(10px);
     box-shadow: 0 -4px 8px var(--shadow);
     margin-top: auto;
     width: 100%;
-    border-radius: 10px; /* Rounded footer */
+    border-radius: 10px;
 }
 
 footer a {
     color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s;
-    border-radius: 8px; /* Rounded footer links */
 }
 
 footer a:hover {
     color: var(--secondary-color);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -245,12 +224,11 @@ footer a:hover {
         padding: 10px;
     }
 
-    .gallery {
+    .feature-cards {
         grid-template-columns: 1fr;
     }
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -260,108 +238,4 @@ footer a:hover {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* Categories Section */
-.categories {
-    text-align: center;
-    padding: 20px 20px;
-}
-
-.categories h2 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    margin-bottom: 30px;
-    border-radius: 8px; /* Rounded category header */
-}
-
-/* Category Cards Grid */
-.category-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-/* Individual Category Card */
-.category-card, .category-card-hidden {
-    background: #222;
-    padding: 30px;
-    border-radius: 15px; /* Rounded category cards */
-    box-shadow: 0 6px 15px var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.category-card-hidden {
-    opacity: 40%;
-}
-
-.category-card-hidden:hover, .category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-}
-
-.category-card h3, .category-card-hidden h3 {
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    border-radius: 8px; /* Rounded category title */
-}
-
-.category-card p, .category-card-hidden p {
-    font-size: 1.1rem;
-    color: var(--muted-text);
-    margin-bottom: 20px;
-}
-
-/* Category Button */
-.category-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--bg-color);
-    padding: 12px 25px;
-    font-weight: 500; /* Medium weight for buttons */
-    border-radius: 8px; /* Rounded button */
-    text-decoration: none;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.category-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--shadow);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .category-cards {
-        grid-template-columns: 1fr;
-    }
-}
-
-.herbarium {
-    margin-bottom: 20px;
-    font-weight: 600;
-    background: linear-gradient(to right, #1E90FF, #8A2BE2);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.nature {
-    margin-bottom: 20px;
-    font-weight: 600;
-    background: linear-gradient(to right, rgb(4, 132, 4), rgb(152, 204, 222));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.coming-soon {
-    margin-bottom: 20px;
-    font-weight: 600;
-    background: linear-gradient(to right, #c29b00, #987200);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }

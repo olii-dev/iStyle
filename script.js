@@ -1,17 +1,13 @@
-// script.js
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
 
-// Search/filter for icons
-function searchIcons() {
-    const searchQuery = document.getElementById('searchBar').value.toLowerCase();
-    const icons = document.querySelectorAll('.icon-card');
-    icons.forEach(icon => {
-        const iconName = icon.querySelector('img').alt.toLowerCase();
-        if (iconName.includes(searchQuery)) {
-            icon.style.display = 'block';
-        } else {
-            icon.style.display = 'none';
-        }
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
     });
-}
+});
 
-document.getElementById('searchBar')?.addEventListener('input', searchIcons);
+document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+    document.body.classList.toggle('dark-mode');
+});
