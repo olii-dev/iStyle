@@ -3,34 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download futuristic shortcuts to enhance your iOS experience.">
-    <title>iStyle - Futuristic Shortcuts</title>
+    <meta name="description" content="Download shortcuts to enhance your iOS experience.">
+    <title>iStyle - Shortcuts</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html"><b>Home</b></a></li>
-                <li><a href="icons.html">Icons</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="wallpapers.html">Wallpapers</a></li>
-                <li><a href="shortcuts.html">Shortcuts</a></li>
+                <li><a href="shortcuts.html"><b>Shortcuts</b></a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <h1>Coming Soon</h1>
-        <section class="coming-soon">
-            <p>Our futuristic shortcuts are on their way. Stay tuned for updates!</p>
-            <p>We are working hard to bring the best shortcuts for your iOS experience. Check back soon!</p>
-            <a href="index.html" class="cta-btn">Back to Home</a>
-        </section>
+        <br><br>
+        <h1>Shortcuts</h1>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search for a shortcut..." onkeyup="searchShortcuts()">
+            <select id="category-select" onchange="filterShortcuts()">
+                <option value="all">All Categories</option>
+                <option value="productivity">Productivity</option>
+                <option value="weather">Weather</option>
+                <option value="ai-tools">AI Tools</option>
+                <option value="health">Health</option>
+            </select>
+        </div>
+
+        <ul id="shortcut-list">
+            <li class="shortcut-card" data-category="ai-tools">
+                <h2>Nuvole AI</h2>
+                <p>The most convenient and incredibly powerful AI shortcut without API keys or Apps</p>
+                <div class="overlay">
+                    <a href="https://www.icloud.com/shortcuts/e2bc0b5d2acf4deabd3664c78a2c8faf" class="cta-btn" download>Download</a>
+                </div>
+            </li>
+            <li class="shortcut-card" data-category="ai-tools">
+                <h2>Alpha AI</h2>
+                <p>The Most Advanced AI Assistant for iOS</p>
+                <div class="overlay">
+                    <a href="https://www.icloud.com/shortcuts/e2cf7ae412d54dd4b31ea4145a334528" class="cta-btn" download>Download</a>
+                </div>
+            </li>
+            <li class="shortcut-card" data-category="weather">
+                <h2>Total Weather</h2>
+                <p>Up-to-the-minute weather report spoken in a more natural manner by Siri.</p>
+                <div class="overlay">
+                    <a href="https://www.icloud.com/shortcuts/638783af177e485f8db724b97459c1e0" class="cta-btn" download>Download</a>
+                </div>
+            </li>
+            <li class="shortcut-card" data-category="ai-tools">
+                <h2>Pro AI</h2>
+                <p>The <b>ultimate</b> AI assistant!</p>
+                <div class="overlay">
+                    <a href="https://www.icloud.com/shortcuts/87cf8e45edf54e1985323094ef2d0590" class="cta-btn" download>Download</a>
+                </div>
+            </li>
+            <li class="shortcut-card" data-category="productivity">
+                <h2>Charging Notification</h2>
+                <p>Set a Battery % you wish to be notified when it is reached.</p>
+                <div class="overlay">
+                    <a href="https://www.icloud.com/shortcuts/ac6f77095cd948c8927796e9373285f8" class="cta-btn" download>Download</a>
+                </div>
+            </li>
+            <li class="shortcut-card" data-category="productivity">
+                <h2>Media Downloader Pro</h2>
+                <p>Download anything from anywhere</p>
+                <div class="overlay">
+                    <a href="https://www.icloud.com/shortcuts/d0b99e76fa184cf1bace05c26b2dec2c" class="cta-btn" download>Download</a>
+                </div>
+            </li>
+            <li class="shortcut-card" data-category="productivity">
+                <h2>The Watchlist</h2>
+                <p>Track Movies and TV Shows you plan on watching.</p>
+                <div class="overlay">
+                    <a href="https://www.icloud.com/shortcuts/250455ca81f34a31a84e16e0ba2d8280" class="cta-btn" download>Download</a>
+                </div>
+            </li>
+            <li class="shortcut-card" data-category="health">
+                <h2>Food Tracker</h2>
+                <p>Track your food consumption and nutritional data in Apple Health.</p>
+                <div class="overlay">
+                    <a href="https://www.icloud.com/shortcuts/ce44035a8d854763ae9e9bbf53624b33" class="cta-btn" download>Download</a>
+                </div>
+            </li>
+        </ul>
     </main>
 
     <footer>
         <p>&copy; 2025 iStyle</p>
-        <p>Follow us on <a href="#">Instagram</a>, <a href="#">Twitter</a>.</p>
+        <p>Follow us on <a href="https://x.com/istyle_official">Twitter</a>.</p>
     </footer>
 
     <script src="script.js"></script>

@@ -87,6 +87,36 @@ nav ul li a:hover {
     border-radius: 8px; /* Rounded paragraph */
 }
 
+/* Search and Category Container */
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+#search {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--muted-text);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+#category-select {
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--muted-text);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
 /* CTA button */
 .cta-btn {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -101,23 +131,6 @@ nav ul li a:hover {
 }
 
 .cta-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--shadow);
-}
-
-.cta-btn-herbarium {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: var(--bg-color);
-    padding: 15px 30px;
-    border-radius: 12px; /* Rounded button */
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-block;
-    transition: transform 0.3s, box-shadow 0.3s;
-    margin-top: 20px;
-}
-
-.cta-btn-herbarium:hover {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px var(--shadow);
 }
@@ -364,4 +377,38 @@ footer a:hover {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.shortcut-card {
+    background: #222;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 20px; /* Added margin for spacing */
+}
+
+.shortcut-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
+}
+
+.cta-btn-herbarium {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--bg-color);
+    padding: 15px 30px;
+    border-radius: 12px; /* Rounded button */
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+}
+
+.cta-btn-herbarium:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--shadow);
 }
